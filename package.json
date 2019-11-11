@@ -1,0 +1,71 @@
+{
+  "name": "TP3-LOG4420",
+  "version": "0.0.1",
+  "description": "Site web du laboratoire",
+  "main": "app.js",
+  "nyc": {
+    "all": true,
+    "include": [
+      "routes/**/*.js",
+      "routes/**/*.js",
+      "services/**/*.js",
+      "middlewares/**/*.js",
+      "helpers/**/*.js"
+    ]
+  },
+  "scripts": {
+    "setup": "node setup.js",
+    "start": "npm run setup && nodemon",
+    "test-ws": "node_modules/.bin/nyc --reporter=html --reporter=text node_modules/.bin/mocha --recursive --reporter=spec --color=false tests/api",
+    "test-mongo": "npm run setup && node_modules/.bin/nyc --reporter=html --reporter=text node_modules/.bin/mocha --recursive --reporter=spec --color=false tests/services",
+    "test": "npm run setup && node_modules/.bin/nyc --reporter=html --reporter=text node_modules/.bin/mocha --recursive --reporter=spec --color=false tests",
+    "e2e": "npm run setup && nightwatch --config ./tests/nightwatch.conf.js --env firefox"
+  },
+  "author": "Konstantinos Lambrou-Latreille",
+  "license": "GPLv3",
+  "dependencies": {
+    "async": "^3.0.1",
+    "body-parser": "1.12.3",
+    "cookie-parser": "1.4.3",
+    "express": "4.12.3",
+    "express-session": "1.15.1",
+    "font-awesome": "4.7.0",
+    "geolang-express": "1.0.0",
+    "http-errors": "1.7.2",
+    "i18n-express": "1.1.3",
+    "js-yaml": "3.8.1",
+    "moment": "2.23.0",
+    "mongodb": "^3.2.7",
+    "pug": "2.0.0-beta11",
+    "request": "2.88.0",
+    "serve-index": "^1.9.1"
+  },
+  "devDependencies": {
+    "chai": "4.2.0",
+    "chromedriver": "^77.0.0",
+    "geckodriver": "^1.18.0",
+    "jspm": "^0.16.54",
+    "mocha": "2.5.3",
+    "nightwatch": "^1.2.4",
+    "nightwatch-custom-commands-assertions": "^1.1.0",
+    "nodemon": "^1.19.1",
+    "nyc": "^13.3.0",
+    "selenium-server": "^3.141.59",
+    "sinon": "^7.5.0",
+    "supertest": "^4.0.2"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "public"
+    },
+    "dependencies": {
+      "babel-core": "npm:babel-core@^6.26.3",
+      "email-obfuscate": "npm:email-obfuscate@^0.0.6"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  }
+}

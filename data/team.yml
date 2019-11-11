@@ -1,0 +1,148 @@
+---
+- lastname: "Deslauriers"
+  firstname: "Michel"
+  email: "michel.deslauriers@polymtl.quebec"
+  titles:
+  - title: associateprofessor
+    current: true
+  homepage: "https://www.polymtl.quebec/expertises/deslauriers-michel"
+  image: "/img/michel_deslauriers.jpg"
+
+- lastname: "Beauchamps"
+  firstname: "Alphonsine"
+  email: "alphonsine.beauchamps@polymtl.quebec"
+  titles:
+  - title: associateprofessor
+    current: true
+  homepage: "https://www.polymtl.quebec/expertises/beauchamps-alphonsine"
+  image: "/img/alphonsine_beauchamps.jpg"
+
+- lastname: "St-Louis"
+  firstname: "Xavier"
+  email: "xavier.st-louis@polymtl.quebec"
+  titles:
+  - title: researchassociate
+    current: true
+  - title: phdstudent
+    current: false
+
+- lastname: "Garand"
+  firstname: "Zack"
+  email: "zack.garand@polymtl.quebec"
+  titles:
+  - title: phdstudent
+    current: true
+
+- lastname: "Rodrigue"
+  firstname: "Christophe"
+  titles:
+  - title: masterstudent
+    current: true
+  image: "/img/christophe_rodrigue.jpg"
+
+- lastname: "Lacoste"
+  firstname: "Granella"
+  titles:
+  - title: masterstudent
+    current: false
+
+- lastname: "Jutras"
+  firstname: "Gustina"
+  titles:
+  - title: masterstudent
+    current: false
+
+- lastname: "Bourgoin"
+  firstname: "Leonard"
+  titles:
+  - title: masterstudent
+    current: false
+
+- lastname: "Anderson"
+  firstname: "Patrick"
+  titles:
+  - title: masterstudent
+    current: false
+
+- lastname: "Deniger"
+  firstname: "Christophe"
+  titles:
+  - title: phdstudent
+    current: true
+  image: "/img/christophe_deniger.jpg"
+
+- lastname: "Gélinas"
+  firstname: "Joey"
+  titles:
+  - title: masterstudent
+    current: false
+
+- lastname: "Simoneau"
+  firstname: "Fleurilius"
+  titles:
+  - title: masterstudent
+    current: false
+
+- lastname: "Trudel"
+  firstname: "Hildège"
+  titles:
+  - title: phdstudent
+    current: false
+
+- lastname: "De Chateaub"
+  firstname: "Robert"
+  email: "robert.dechateaub@polymtl.quebec"
+  titles:
+  - title: phdstudent
+    current: true
+  image: "/img/robert_de_chateaub.jpg"
+
+- lastname: "Monty"
+  firstname: "Clothilde"
+  email: "clothilde.monty@polymtl.quebec"
+  titles:
+  - title: phdstudent
+    current: true
+  image: "/img/clothilde_monty.jpg"
+
+- lastname: "Renaud"
+  firstname: "Liodore"
+  titles:
+  - title: masterstudent
+    current: false
+  image: "/img/liodore_renaud.jpg"
+
+- lastname: "Benjamin"
+  firstname: "Rosamonde"
+  titles:
+  - title: masterstudent
+    current: true
+  image: "/img/rosamonde_benjamin.jpg"
+
+- lastname: "Rochefort"
+  firstname: "Talbot"
+  titles:
+  - title: masterstudent
+    current: true
+  image: "/img/talbot_rochefort.jpg"
+
+- lastname: "Noël"
+  firstname: "Damien"
+  email: "damien.noel@polymtl.quebec"
+  titles:
+  - title: masterstudent
+    current: true
+
+- lastname: "Mailloux"
+  firstname: "Capucine"
+  titles:
+  - title: masterstudent
+    current: true
+  image: "/img/capucine_mailloux.jpg"
+
+- lastname: "Charron"
+  firstname: "Aurore"
+  titles:
+  - title: masterstudent
+    current: true
+  image: "/img/aurore_charron.jpg"

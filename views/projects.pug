@@ -1,0 +1,49 @@
+extends layout
+
+block content
+
+  mixin projectLine(project)
+    li
+      span
+        = project.student
+        | #{', '}
+      a(href="/projects/" + project._id)
+        = project.title
+      footer.meta
+        p
+          = t.PROJECTS.SUPERVISOR_TEXT
+          | #{': '}
+          = project.supervisor
+        if project.cosupervisor
+          p
+            = t.PROJECTS.COSUPERVISOR_TEXT
+            | #{': '}
+            = project.cosupervisor
+
+  -
+    const currentProjects = projects.filter(p => p.current)
+    const pastProjects = projects
+      .filter(p => !p.current)
+      .sort((p1, p2) => p1.year < p2.year ? 1 : p1.year > p2.year ? -1 : 0)
+
+  h1= t.PROJECTS.CURRENT_PROJECT_TITLE
+  if currentProjects.length === 0
+    p= t.PROJECTS.NO_CURRENT_PROJECTS_TXT
+  else
+    ul.projects
+      each project in currentProjects
+        +projectLine(project)
+
+  h1= t.PROJECTS.PAST_PROJECT_TITLE
+  if pastProjects.length === 0
+    p= t.PROJECTS.NO_PAST_PROJECTS_TXT
+  else
+    ul.projects
+      each project in pastProjects
+        +projectLine(project)
+
+block script-content
+  script.
+    document.addEventListener("DOMContentLoaded", event => {
+      document.getElementById('projects-link').classList.add('active');
+    });

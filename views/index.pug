@@ -1,0 +1,37 @@
+extends layout
+
+block content
+  .jumbotron
+    for p in t.DESCRIPTION.split("\n")
+      p !{p}
+  h2 Nouvelles
+  if feeds.length === 0
+    p= t.FEEDS.NO_NEW_FEEDS_MSG
+  else
+    ul.news
+      each feed in feeds
+        if feed.type === 'seminar'
+          li
+            .icon #[img(src="/img/presentation-icon.png")]
+            .text
+              .post-date= formatter.getDayDate(feed.createdAt)
+              .title
+                = t.NEXT_SEMINAR_TEXT
+                | #{': '}
+                a(href="#")= feed.title
+              .presentator= feed.presentator
+              .date= formatter.getHourDate(feed.date)
+              .location !{feed.location}
+        else if feed.type === 'news'
+          li
+            .icon #[i.fa.fa-file-text-o]
+            .text
+              .post-date= formatter.getDayDate(feed.createdAt)
+              .title !{feed.text}
+
+block script-content
+  script.
+    document.addEventListener("DOMContentLoaded", event => {
+      document.getElementById('home-link').classList.add('active');
+    });
+

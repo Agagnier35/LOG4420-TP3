@@ -1,0 +1,42 @@
+extends layout
+
+block content
+  h1= project.title
+
+  section.description
+    footer.meta
+      p
+        = t.PROJECTS.STUDENT_TITLE
+        | #{': '}
+        = project.student
+      p
+        = t.PROJECTS.SUPERVISOR_TEXT
+        | #{': '}
+        = project.supervisor
+      if project.cosupervisor
+        p
+          = t.PROJECTS.COSUPERVISOR_TEXT
+          | #{': '}
+          = project.cosupervisor
+
+    div
+      each paragraph in project.description.split('\n')
+        p= paragraph
+
+    if project.thesisUrl
+      p
+        = t.PROJECTS.FOR_MORE_INFO_TXT
+        | #{', '}
+        a(href=project.thesisUrl)= t.PROJECTS.CLICK_HERE_TXT
+
+  include mixins/pubtable
+
+  if publications.length > 0
+    h2= t.PUBLICATIONS.TITLE
+    +pubtable(publications)
+
+block script-content
+  script.
+    document.addEventListener("DOMContentLoaded", event => {
+      document.getElementById('projects-link').classList.add('active');
+    });

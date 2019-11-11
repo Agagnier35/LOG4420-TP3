@@ -1,0 +1,265 @@
+extends layout
+
+block content
+
+  include mixins/pubtable
+
+  h2= t.PUBLICATIONS.TITLE
+
+  if pubFormErrors.length > 0
+    .errors
+      p= t.PUBLICATIONS.ERROR_INTRO_MSG
+      ul
+        each err in pubFormErrors
+          li= err
+
+  button.trigger= t.PUBLICATIONS.ADD_PUB
+
+  .modal
+    .modal-content
+      // span.close-button x
+      i.fa.fa-window-close.fa-2x.close-button
+      h2= t.PUBLICATIONS.CREATE_TITLE
+      form(method='POST')
+        label(for='year')
+          = t.PUBLICATIONS.YEAR_TXT
+          | #{':'}
+        input(
+          type='number',
+          name='year',
+          step='1',
+          value='2020',
+          placeholder=t.PUBLICATIONS.YEAR_TXT)
+        br
+
+        label(for='month')
+          = t.PUBLICATIONS.MONTH_TXT
+          | #{' '}
+        select(name='month') //, required)
+          option(value='')
+            | - #{' '}
+            = t.PUBLICATIONS.MONTH_TXT
+            | - #{' '}
+          each monthName, i in monthNames
+            option(value=i)= monthName.charAt(0).toUpperCase() + monthName.slice(1)
+        br
+
+        label(for='title')
+          = t.PUBLICATIONS.TITLE_TXT
+          | #{':'}
+        input(type='text',
+          name='title',
+          placeholder=t.PUBLICATIONS.TITLE_TXT,
+          value='Title test')
+        br
+
+        label(for='authors')
+          = t.PUBLICATIONS.AUTHOR_TXT
+          | #{':'}
+        br
+        .author-input
+          input(
+            type='text',
+            name='authors[]',
+            placeholder=t.PUBLICATIONS.AUTHOR_TXT,
+            value='Author test')
+        .add-author
+          i.fa.fa-plus.fa-3x
+
+        label(for='venue')
+          = t.PUBLICATIONS.VENUE_TXT
+          | #{':'}
+        input(
+          type='text',
+          name='venue',
+          placeholder=t.PUBLICATIONS.VENUE_TXT,
+          value='Venue test')
+        br
+
+        input(type='submit', value=t.PUBLICATIONS.CREATE_TXT)
+
+  p
+    = t.PUBLICATIONS.SORT_BY_TXT
+    | #{': '}
+    select#fieldFilterSection
+      each option in ['date', 'title']
+        option(value=option, selected=option == pagingOptions.sortBy)= option
+
+  p
+    = t.PUBLICATIONS.ORDER_BY_TXT
+    | #{': '}
+    select#filterAscValueSection
+      option(value='desc', selected=pagingOptions.orderBy == 'desc')= t.PUBLICATIONS.DESC_TXT
+      option(value='asc', selected=pagingOptions.orderBy == 'asc')= t.PUBLICATIONS.ASC_TXT
+
+  +pubtable(publications)
+
+  -
+    const previousPageNumber = pagingOptions.pageNumber == 1 ? pagingOptions.pageNumber : pagingOptions.pageNumber - 1
+    const nextPageNumber = pagingOptions.pageNumber == numberOfPages ? pagingOptions.pageNumber : pagingOptions.pageNumber + 1
+
+  .pagination
+    a.pagination-link.previous &laquo;
+    each page in [...Array(numberOfPages).keys()].map(p => p + 1)
+      a.pagination-link(
+        class=page == pagingOptions.pageNumber ? 'active' : '',
+        data-pagenumber=page)= page
+    a.pagination-link.next &raquo;
+
+    p= t.PUBLICATIONS.DISPLAY_TXT
+      select#elementsPerPageSection
+        each value in [10, 20, 30, 50, 100]
+          option(value=value, selected=value == pagingOptions.limit)= value
+      = t.PUBLICATIONS.RESULT_PER_PAGE_TXT
+
+block script-content
+  script.
+    document.addEventListener('DOMContentLoaded', event => {
+      document.getElementById('publications-link').classList.add('active');
+    });
+
+    document.querySelector('form').addEventListener('submit', event => {
+      event.target.action = document.location.href
+    })
+
+    document.querySelectorAll('.pagination a.pagination-link').forEach(a => {
+      a.addEventListener('click', event => {
+        const url = new URL(document.location.href)
+        const search_params = new URLSearchParams(url.search)
+        search_params.set('page', event.target.dataset.pagenumber)
+        search_params.set('limit', '#{pagingOptions.limit}')
+        url.search = search_params
+        document.location.href = url
+      })
+    })
+
+    document.querySelector('.pagination a.pagination-link.previous').addEventListener('click', event => {
+      const url = new URL(document.location.href)
+
+      const search_params = new URLSearchParams(url.search)
+
+      const currentPage = search_params.get('page')
+      if (currentPage === null || currentPage <= 1) {
+        search_params.set('page', 1)
+      } else {
+        search_params.set('page', parseInt(currentPage) - 1)
+      }
+
+      url.search = search_params
+
+      document.location.href = url
+    })
+
+    document.querySelector('.pagination a.pagination-link.next').addEventListener('click', event => {
+      const url = new URL(document.location.href)
+
+      const search_params = new URLSearchParams(url.search)
+
+      const currentPage = search_params.get('page')
+      if (currentPage === null || currentPage >= '#{numberOfPages}') {
+        search_params.set('page', '#{numberOfPages}')
+      } else {
+        search_params.set('page', parseInt(currentPage) + 1)
+      }
+
+      url.search = search_params
+
+      document.location.href = url
+    })
+
+    document.getElementById('elementsPerPageSection').addEventListener('change', event => {
+      const url = new URL(document.location.href)
+      const search_params = new URLSearchParams(url.search)
+      search_params.set('limit', event.target.value)
+      search_params.set('page', 1)
+      url.search = search_params
+      document.location.href = url
+    })
+
+    document.getElementById('elementsPerPageSection').addEventListener('change', event => {
+      const url = new URL(document.location.href)
+      const search_params = new URLSearchParams(url.search)
+      search_params.set('limit', event.target.value)
+      search_params.set('page', 1)
+      url.search = search_params
+      document.location.href = url
+    })
+
+    document.getElementById('fieldFilterSection').addEventListener('change', event => {
+      const url = new URL(document.location.href)
+      const search_params = new URLSearchParams(url.search)
+      search_params.set('sort_by', event.target.value)
+      url.search = search_params
+      document.location.href = url
+    })
+
+    document.getElementById('filterAscValueSection').addEventListener('change', event => {
+      const url = new URL(document.location.href)
+      const search_params = new URLSearchParams(url.search)
+      search_params.set('order_by', event.target.value)
+      url.search = search_params
+      document.location.href = url
+    })
+
+    document.querySelectorAll('table.publications .del-icon').forEach(a => {
+      a.addEventListener('click', event => {
+        const req = new XMLHttpRequest()
+        req.onreadystatechange = () => {
+          if (req.readyState == XMLHttpRequest.DONE) {
+            if (req.status == 200) {
+              const url = new URL(document.location.href)
+              document.location.href = url
+            }
+            else if (req.status == 400) {
+              alert('There was an error 400')
+            }
+            else {
+              alert('something else other than 200 was returned')
+            }
+          }
+        }
+
+        req.open('DELETE', '/api/publications/' + event.currentTarget.dataset.id, true)
+        req.send()
+      })
+    })
+
+    const modal = document.querySelector('.modal');
+    const trigger = document.querySelector('.trigger');
+    const closeButton = document.querySelector('.close-button');
+
+    function toggleModal() {
+      modal.classList.toggle('show-modal');
+    }
+
+    function windowOnClick(event) {
+      if (event.target === modal) {
+          toggleModal();
+      }
+    }
+
+    trigger.addEventListener('click', toggleModal);
+    closeButton.addEventListener('click', toggleModal);
+    window.addEventListener('click', windowOnClick);
+
+    document.querySelector('form .add-author').addEventListener('click', event => {
+      const html = `
+        <div class="author-input">
+          <input type="text" name="authors[]" placeholder="Author" />
+        </div><div class="remove-author">
+          <i class="fa fa-minus fa-3x"></i>
+        </div>
+      `
+      const template = document.createElement('template')
+      template.innerHTML = html.trim()
+
+      template.content.querySelectorAll('.remove-author').forEach(node => {
+        node.addEventListener('click', event => {
+          const parent = event.currentTarget.parentNode
+          parent.removeChild(event.currentTarget.previousSibling)
+          parent.removeChild(event.currentTarget)
+        })
+      })
+      event.currentTarget.parentNode.insertBefore(template.content, event.currentTarget)
+    })
+

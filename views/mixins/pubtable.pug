@@ -1,0 +1,20 @@
+mixin pubtable(publications)
+  table.publications
+    tbody
+      each pub in publications
+        tr
+          td
+            .del-icon(data-id=pub._id) #[i.fa.fa-trash-o.fa-2x]
+          td
+            span.annee= pub.year
+            br
+            if pub.month
+              span.mois= pub.month
+          td.publication
+            p.pubtitle
+              // img(src="/img/pdficon_small.png", alt="PDF", width="16", height="16")
+              = pub.title
+            p.authors= pub.authors.join(', ')
+            p.venuetype
+            p.venue
+              i= pub.venue

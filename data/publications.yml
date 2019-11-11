@@ -1,0 +1,259 @@
+---
+- key: deAguiar2019
+  year: 2019
+  month: 1
+  authors: [Camila Zacche de Aguiar, Davidson Cury, Alphonsine Beauchamps]
+  title: "Mining Concept Map from Text in Portuguese"
+  venue: "Brazilian Journal of Computers in Education 27.01"
+
+- key: fleurilius2018
+  year: 2018
+  month: 5
+  authors: [Simoneau Fleurilius, Alphonsine Beauchamps, Michel Deslauriers, Michel Jean]
+  title: "A Machine Learning Filter for the Slot Filling Task"
+  venue: "Information 2018, 9(6), 133"
+
+- key: anderson2018
+  year: 2018
+  month: 1
+  authors: [Patrick Anderson, Michel Deslauriers, Alphonsine Beauchamps]
+  title: "FICLONE: Improving DBpedia Spotlight Using Named Entity Recognition and Collective Disambiguation"
+  venue: "Open Journal of Semantic Web (OJSW) 5.1 (2018): 12-28."
+
+- key: mantecon2018
+  year: 2018
+  month: 7
+  authors: [Jesus Gerardo Mantecon, Clothide Monty, Alphonsine Beauchamps, Jelena Jovanovic, Jenny McDonald]
+  title: "A Comparison of Features for the Automatic Labeling of Student Answers to Open-Ended Questions"
+  venue: "International Conference on Educational Data Mining (EDM) (11th, Raleigh, NC, Jul 16-20, 2018)"
+
+- key: bourgoin2018
+  year: 2018
+  month: 6
+  authors: [Leonard Bourgoin, Alphonsine Beauchamps, Michel Deslauriers]
+  title: "LAMA: a language adaptive method for question answering"
+  venue: "Scalable Question Answering over Linked Data Challenge (SQA2018), Heraklion, Greece"
+
+- key: beauchamps2017
+  year: 2017
+  month: 11
+  authors: [Alphonsine Beauchamps, Michel Deslauriers, Michel Jean]
+  title: "An assessment of open relation extraction systems for the semantic web"
+  venue: "Information Systems, Volume 71, p. 228-239"
+
+- key: bourgoin2017a
+  year: 2017
+  authors: [Leonard Bourgoin, Michel Deslauriers, Alphonsine Beauchamps]
+  title: "Answering Natural Language Questions on RDF
+Knowledge base in French"
+  venue: "Question Answering over Linked Data Challenge. (1st place of QALD 2017 – Question answering in French)"
+
+- key: bourgoin2017b
+  year: 2017
+  month: 10
+  authors: [Leonard Bourgoin, Michel Deslauriers, Alphonsine Beauchamps]
+  title: "AMAL: Answering French Natural Language Questions using DBpedia"
+  venue: "ESWC 2017 Semantic Web Challenges, Springer"
+
+- key: deniger2017
+  year: 2017
+  month: 1
+  authors: [Christophe Deniger, Alphonsine Beauchamps, Michel Deslauriers]
+  title: "Assessing and Improving Domain Knowledge Representation in DBpedia"
+  venue: "Open Journal of Semantic Web (OJSW), 4(1) : p. 1-19"
+
+- key: anderson2016
+  year: 2016
+  month: 6
+  authors: [Patrick Anderson, Michel Deslauriers, Alphonsine Beauchamps]
+  title: "Collective disambiguation and Semantic Annotation for Entity Linking and Typing"
+  venue: "ESWC-16 Open Knowledge Extraction Challenge, Heraklion, Greece"
+
+- key: gelinas2016-2
+  year: 2016
+  month: 7
+  authors: [Joey Gelinas, Alphonsine Beauchamps, Michel Deslauriers]
+  title: "Automatic Extraction of Axioms from Wikipedia Using SPARQL"
+  venue: "ESWC-16 Open Knowledge Extraction Challenge, Heraklion, Greece"
+
+- key: gelinas2016
+  year: 2016
+  month: 5
+  authors: [Joey Gelinas, Christophe Deniger, Alphonsine Beauchamps, Michel Deslauriers]
+  title: "Entity Typing and Linking using SPARQL Patterns and DBpedia"
+  venue: "ESWC-16 Open Knowledge Extraction Challenge, Heraklion, Greece"
+
+- key: fleurilius2016
+  year: 2016
+  month: 4
+  authors: [Simoneau Fleurilius, Alphonsine Beauchamps, Jean-Marc Parent, Michel Deslauriers]
+  title: "A Machine learning Filter for Relation Extraction"
+  venue: "25th World Wide Web Conference, Montreal"
+
+- key: stlouis2016
+  year: 2016
+  month: 7
+  authors: [Xavier St-Louis, Marc Tessier, Robert de Chateaub, Jean Jacques, Michel Deslauriers]
+  title: "Étude Prospective d’un Système Tutoriel à l’aide du Modèle des Espaces de Travail Mathématique"
+  venue: "Proceedings Fifth ETM Symposium"
+
+- key: deniger2015
+  year: 2015
+  month: 11
+  authors: [Christophe Deniger, Alphonsine Beauchamps, Michel Deslauriers]
+  title: "Assessing the Quality of Domain Concepts Descriptions in DBpedia"
+  venue: "12th International Conference on Signal Image Technology & Internet Based Systems, Bangkok, p. 254-261"
+
+- key: deniger2015
+  year: 2015
+  month: 11
+  authors: [Christophe Deniger, Alphonsine Beauchamps, Michel Deslauriers]
+  title: "Assessing the Quality of Domain Concepts Descriptions in DBpedia"
+  venue: "2015 11th International Conference on Signal-Image Technology & Internet-Based Systems (SITIS)"
+
+- key: parent2014
+  year: 2014
+  month: 12
+  authors: [Jean-Marc Parent, Alphonsine Beauchamps, Michel Deslauriers, Faezeh Ensan]
+  title: "An Assessment of Online Semantic Annotators for the Keyword Extraction Task"
+  venue: "The 13rd Pacific Rim Internationl Conference on Artificial Intelligence, Gold Coast, Australia."
+
+- key: paquin2014
+  year: 2014
+  month: 6
+  authors: [Laurent Paquin, Catherine Levac, Jean-Marc Parent and Michel Deslauriers]
+  title: "Mutual Disambiguation for Entity Linking"
+  venue: "52nd Annual Meeting of the Association for Computational Linguistics (ACL 2014), Baltimore"
+
+- key: claude-lachenaud2014
+  year: 2014
+  authors: [Coline Claude-Lachenaud, Laurent Paquin, Mike Ward and Michel Deslauriers]
+  title: "A multimodal interpreter for 3D visualization and animation of verbal concepts"
+  venue: "9th edition of the Language Resources and Evaluation Conference,  Reykjavik, Iceland."
+
+- key: paquin2014-2
+  year: 2014
+  authors: [Laurent Paquin, Marie-Jean Meurs, Jean-Marc Parent and Michel Deslauriers]
+  title: "Improving Entity Linking using Surface Form Refinement"
+  venue: "9th edition of the Language Resources and Evaluation Conference,  Reykjavik, Iceland"
+
+- key: paquin2014
+  year: 2014
+  authors: [Laurent Paquin, Catherine Levac, Jean-Marc Parent, Michel Deslauriers]
+  title: "Using Collaborative Tagging for Text Classification to Opinion Mining"
+  venue: "Informatic,vol. 1, no. 1"
+
+- key: lee2013
+  year: 2013
+  authors: [Michelle Lee, Maurice Richard, Xavier St-Louis, Michel Deslauriers]
+  title: "Analyse d’un système tutoriel intelligent en tant qu’espace de travail géométrique idoine"
+  venue: "Revista latinoamericana de investigación en matemática educativa, vol. 17, Numero Extraordinario 1, p. 179-190"
+
+- key: paquin2013-3
+  year: 2013
+  authors: [Laurent Paquin, Jean-Marc Parent, Catherine Levac, Michel Deslauriers]
+  title: "Trois recettes d’apprentissage automatique pour un système d’extraction d’information et de classification de recettes de cuisine"
+  venue: "9e DÉfi Fouille de Textes (DEFT 2013), Les Sables d'Olonne"
+
+- key: deslauriers2013a
+  year: 2013
+  authors: [Michel Deslauriers]
+  title: "Les bibliothèques numériques sont-elles solubles dans le Web sémantique?"
+  venue: "Documentation et bibliothèques, vol. 59, no. 3"
+
+- key: richard2013
+  year: 2013
+  authors: [Maurice Richard, Michel Deslauriers, Josep Maria Fortuny]
+  title: "Means of choice for interactive management of dynamic geometry problems based on instrumented behaviour"
+  venue: "American Journal of Computational Mathematics, vol. 3, p. 41-51"
+
+- key: deslauriers2013b
+  year: 2013
+  authors: [Michel Deslauriers, Marie-Thérèse Lalande, Laurent Paquin]
+  title: "Full Syntactic Parsing for Enrichment of RDF dataset"
+  venue: "Linked Data for Information Extraction (LD4IE), Workshop at The 12th International Semantic Web Conference, Sydney"
+
+- key: deslauriers2013c
+  year: 2013
+  authors: [Michel Deslauriers, Alphonsine Beauchamps, Jean-Marc Parent]
+  title: "Can we use Linked Data Semantic Annotators for the Extraction of Domain-Relevant Expressions?"
+  venue: "2nd International Workshop on Web of Linked Entities, Rio"
+
+- key: paquin2013-2
+  year: 2013
+  authors: [Laurent Paquin, Michel Deslauriers, Jean-Marc Parent]
+  title: "Influence des annotations sémantiques sur un système de détection de coréférence à base de perceptron multi-couches"
+  venue: "TALN 2013, Les Sables d’Olonne, France"
+
+- key: paquin2013
+  year: 2013
+  authors: [Laurent Paquin, Jean-Marc Parent, Catherine Levac, Michel Deslauriers]
+  title: "Trois recettes d'apprentissage automatique pour un système d'extraction d'information et de classification de recettes de cuisines"
+  venue: "DeFT 2013, Les sables d'Olonne, France"
+
+- key: parent2013
+  year: 2013
+  authors: [Jean-Marc Parent, Michel Deslauriers, Laurent Paquin]
+  title: "A knowledge-base oriented approach for automatic keyword extraction"
+  venue: "14th International Conference on Intelligent Text Processing and Computational Linguistics, Samos"
+
+- key: richard2012-2
+  year: 2012
+  authors: [Maurice Richard, Michèle Lee, Xavier St-Louis]
+  title: "Les démarches fondamentales d'un espace de travail pour l'apprentissage de la géométrie à l'école secondaire"
+  venue: "Troisième symposium ETM - Espace de travail mathématique, Montréal"
+
+- key: richard2012
+  year: 2012
+  authors: [Maurice Richard, Michèle Lee, Xavier St-Louis]
+  title: "Levels of teaching intervention and the development of geogebraTUTOR system in a secondary school experiment"
+  venue: "World Conference on E-Learning in Corporate, Government, Healthcare & Higher Education (E-Learn 2012), Montréal"
+
+- key: paquin2012
+  year: 2012
+  authors: [Laurent Paquin, Michel Deslauriers]
+  title: "A disambiguation resource extracted from Wikipedia for semantic annotation"
+  venue: "LREC 2012, Eighth International Conference on Language Resources and Evaluation, Istanbul"
+
+- key: trudel2011
+  year: 2011
+  authors: [Hildège Trudel, Michel Deslauriers, Rachid Badouri]
+  title: "Answer Set Programming and Blackboard System"
+  venue: "International Workshop on Learning, Agents and Formal Languages, Lyon"
+
+- key: lalande2011
+  year: 2011
+  authors: [Marie-Thérèse Lalande, Michel Deslauriers]
+  title: "Drugs and Disorders: From specialized resources to Web data"
+  venue: "Workshop on Web Scale Knowledge Extraction, 10th International Semantic Web Conference, Bonn"
+
+- key: tetreault2011
+  year: 2011
+  authors: [Michel Tétreault, Aude Dufresne, Michel Deslauriers]
+  title: "Development of an Ontology-Based  E-Recruitment Application That Integrates Social Web"
+  venue: "Electronic Business Interoperability: Concepts, Opportunities, and Challenges, Ejub Kajan (ed.), IGI Global"
+
+- key: paquin2011
+  year: 2011
+  authors: [Laurent Paquin, Michel Deslauriers]
+  title: "Poly-co: a multilayer perceptron approach for coreference detection"
+  venue: "Fifteenth Conference on Computational Natural Language Learning: Shared Task, Portland"
+
+- key: richard2011
+  year: 2011
+  authors: [Maurice Richard, Josep Maria Fortuny, Michel Deslauriers, Xavier St-Louis, Eloi Puertas and Michèle Lee]
+  title: "Didactic and theoretical-based perspectives in the experimental development of an intelligent tutorial system for the learning of geometry"
+  venue: "ZDM, The International Journal on Mathematics Education, vol.43, no.3, p.425-439"
+
+- key: paquin2011
+  year: 2011
+  authors: [Laurent Paquin, Michel Deslauriers, Mike Ward]
+  title: "Automatic Semantic Web annotation of named entities"
+  venue: "Canadian Conference on Artificial Intelligence 2011, St. John's, Newfoundland and Labrador"
+
+- key: paquin2011
+  year: 2011
+  authors: [Laurent Paquin, Michel Deslauriers, Mike Ward]
+  title: "Génération automatique de motifs de détection d’entités nommées en utilisant des contenus encyclopédiques"
+  venue: "TALN 2010, Montpellier"
+

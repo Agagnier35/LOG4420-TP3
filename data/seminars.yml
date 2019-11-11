@@ -1,0 +1,80 @@
+---
+- title:
+    fr: ""
+  presentator: ""
+  date: "2020-11-12 05:00:00"
+  createdAt: "2020-12-12 00:00:00"
+  location: ""
+  description:
+    fr: >
+
+- title:
+    fr: "Déception machine et Hallucinations profondes d'Érudits: Pourquoi Repère ? Pourquoi maintenant ?"
+  presentator: "Olivier Spéciel"
+  date: "2019-12-12 05:00:00"
+  createdAt: "2019-12-22 00:00:00"
+  location: "Salle M-1022 <a href='https://www.openstreetmap.org/way/24150964'>au pavillon Lassonde à Polytechnique Montréal</a>"
+  description:
+    fr: >
+      SDM, une OSBL québécoise, collabore avec BAnQ à la production de l'index de périodiques Repère, incluant des revues d’Érudit et de CAIRN. Après lecture des articles sélectionnés, des indexeures procèdent à l’extraction de concepts principaux qu’elles traduisent par des descripteurs. La structure de la liste des descripteurs du fichier d'autorité (Factual) est inspirée du RVM, le Répertoire des vedettes-matières de la bibliothèque de l'Université Laval.\nCette présentation se propose de faire un bref survol de la chaîne de traitement et de la gestion des vocabulaires: processus d’indexation, contrôle d’autorité, création diligente de nouveaux descripteurs, modification rétrospective de ceux qui existent déjà et problématique de la cohérence entre les indexeurs. Plusieurs projets en traitement automatisé des langues naturelles, impliquant de l’apprentissage machine, seront mis en perspective par rapport au développement d'un dispositif de traitement documentaire impliquant le web sémantique, les données liées et des assistants conversationnels.
+
+- title:
+    fr: "SkNNI"
+  presentator: "Philippe Trempe"
+  date: "2018-11-12 05:00:00"
+  createdAt: "2018-12-23 00:00:00"
+  location: "Salle M-2110 <a href='https://www.openstreetmap.org/way/24150964'>au pavillon Lassonde à Polytechnique Montréal</a>"
+  description:
+    fr: >
+      Philippe vous présente SkNNI (prononcé skinny), un algorithme d'interpolation géospatiale visant à organiser des données géospatiales disparates de manière à les rendre accessibles à une panoplie de modèles prédictifs.
+      La présentation abordera d'abord la motivation derrière la création de SkNNI.
+      Par la suite seront détaillées les diverses étapes de l'algorithme tant schématiquement que mathématiquement.
+      Enfin, la présentation sera conclue par l'exposition de résultats ainsi que par la réalisation d'une brève discussion au sujet de potentiels travaux futurs pouvant faire usage d'un algorithme tel que SkNNI.
+
+- title:
+    fr: "OntoMic, une ontologie pour les laboratoires de microbiologie clinique"
+  presentator: "Jean-Guy Levreault"
+  date: "2019-11-12 05:00:00"
+  createdAt: "2019-12-13 00:00:00"
+  location: "Salle 3195, Pavillon André-Aisenstadt"
+  description:
+    fr: >
+      L'ontologie OntoMic vise à automatiser la détection d'incohérences dans les documents de référence des laboratoires de microbiologie. OntoMic a recours au formalisme de Basic Formal Ontology (BFO) pour représenter les informations et à l'inférence automatique par raisonneur pour la détection automatique des incohérences.
+
+- title:
+    fr: "SC-LSTM: Learning Task-Specific Representations in Multi-Task Learning for Sequence Labeling"
+  presentator: "Peng Lu"
+  date: "2019-11-12 05:00:00"
+  createdAt: "2019-12-12 00:00:00"
+  location: "Salle 3195, Pavillon André-Aisenstadt"
+  description:
+    fr: >
+      Multi-task learning (MTL) has been studied recently for sequence labeling. Typically, auxiliary tasks are selected specifically in order to improve the performance of a target task. Jointly learning multiple tasks in a way that benefits all of them simultaneously can increase the utility of MTL. In order to do so, we propose a new LSTM cell which contains both shared parameters that can learn from all tasks, and task-specific parameters that can learn task specific information. We name it a Shared-Cell Long-Short Term Memory. Experimental results on three sequence labeling benchmarks (named-entity recognition, text chunking, and part-of-speech tagging) demonstrate the effectiveness of this new type of cell.
+
+- title:
+    fr: "Towards a Multilingual Resource on the Language of Chemistry: A Lexical Network Approach "
+  presentator: "Polina Mikhel "
+  date: "2018-11-12 05:00:00"
+  createdAt: "2018-12-12 00:00:00"
+  location: "Salle C-9019, Pavillon Lionel-Groulx"
+  description:
+    fr: >
+      I will present the first results in construction of a lexicographic model of core chemical terms in French, English and Russian. FRONTERME is an interdisciplinary project on the terminology of chemistry carried out at the ATILF and the LPCT CNRS laboratories (Nancy, France). The project is aimed at the rigorous formal modeling of the core vocabulary of chemistry and of its interaction with the general language lexicon. In our study, we propose a non-ontological graph structuring of the lexicon by means of Lexical Systems. Using a multilingual perspective, we place high emphasis on connections between terms and non-terms, as well as on connections between interdisciplinary terms and on discrepancies between three languages. One of our main concerns is writing lexical definitions of chemical terms avoiding definitional ambiguities and proposing clearly structured and harmonized definitions of terms in French, English and Russian which will become an efficient tool for the understanding of scientific texts, for teaching chemistry and for scientific writing
+
+- title:
+    fr: ""
+  presentator: ""
+  date: "2018-11-12 05:00:00"
+  createdAt: "2018-12-12 00:00:00"
+  location: "Salle 3195, Pavillon André-Aisenstadt"
+  description:
+    fr: >
+
+- title:
+    fr: ""
+  presentator: ""
+  date: "2018-11-12 05:00:00"
+  createdAt: "2018-12-12 00:00:00"
+  location: "Salle 3195, Pavillon André-Aisenstadt"
+  description:
+    fr: >

@@ -1,0 +1,84 @@
+extends layout
+
+block content
+
+  -
+    const titleMapping = {
+      'associateprofessor': t.ASSOCIATE_PROFESSOR_TITLE
+    }
+
+  mixin memberSectionWithPhoto(members, sectionTitle, predicateTitle)
+    -
+      const filteredMembers = members
+        .map(m => {
+          m.title = m.titles.find(predicateTitle)
+          return m
+        })
+        .filter(m => m.title)
+
+    if filteredMembers.length !== 0
+      h2= sectionTitle
+      ul.people
+        each member in filteredMembers
+          -
+            const specificTitle = titleMapping[member.title.title]
+          +memberInfoWithPhoto(member, specificTitle)
+
+  mixin memberSectionWithoutPhoto(members, sectionTitle, predicateTitle)
+    -
+      const filteredMembers = members
+        .map(m => {
+          m.title = m.titles.find(predicateTitle)
+          return m
+        })
+        .filter(m => m.title)
+    if filteredMembers.length !== 0
+      section
+        h1= sectionTitle
+        ul
+          each member in filteredMembers
+            +memberInfoWithoutPhoto(member)
+
+  mixin memberInfoWithPhoto(member, specificTitle)
+    li
+      a.person-photo
+        if member.image
+          img.img-circle(src=member.image, alt="Aucune image")
+        else
+          i.fa.fa-user-circle.fa-5x.img-circle
+      div.person
+        a.name(href=member.homepage)= `${member.firstname} ${member.lastname}`
+        p.bio= specificTitle
+        p.email.bio
+          a(href="mailto:" + member.email)= member.email
+
+
+  mixin memberInfoWithoutPhoto(member)
+    li #[a(href=member.homepage)= `${member.firstname} ${member.lastname}`]
+
+  h1= t.TEAM_TITLE
+
+  +memberSectionWithPhoto(members, t.PROFESSORS_TITLE, t => t.title === 'associateprofessor' && t.current)
+
+  +memberSectionWithPhoto(members, t.RESEARCH_ASSOCIATE_TITLE, t => t.title === 'researchassociate' && t.current)
+
+  +memberSectionWithPhoto(members, t.PHD_STUDENT_TITLE, t => t.title === 'phdstudent' && t.current)
+
+  +memberSectionWithPhoto(members, t.MASTER_STUDENT_TITLE, t => t.title === 'masterstudent' && t.current)
+
+  +memberSectionWithPhoto(members, t.UNDERGRAD_STUDENT_TITLE, t => t.title === 'undergradstudent' && t.current)
+
+  h1.oldpeopletitle= t.OLD_MEMBER_TITLE
+
+  div.oldpeople
+    +memberSectionWithoutPhoto(members, t.POST_PHD_STUDENT_TITLE, t => t.title === 'postDoctoratStudent' && !t.current)
+
+    +memberSectionWithoutPhoto(members, t.PHD_STUDENT_TITLE, t => t.title === 'phdstudent' && !t.current)
+
+    +memberSectionWithoutPhoto(members, t.MASTER_STUDENT_TITLE, t => t.title === 'masterstudent' && !t.current)
+
+block script-content
+  script.
+    document.addEventListener('DOMContentLoaded', event => {
+      document.getElementById('team-link').classList.add('active')
+    })

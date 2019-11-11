@@ -1,0 +1,95 @@
+{
+  "SITE_TITLE": "Semantic IA Lab",
+  "AI": "Artificial Intelligence",
+  "SEMANTIC_WEB": "Semantic web",
+  "NAV": {
+    "HOME": "Home",
+    "TEAM": "Team",
+    "PROJECTS": "Projects",
+    "PUBLICATIONS": "Publications",
+    "SEMINARS": "Seminars",
+    "ABOUT": "About",
+    "CONTACT": "Contact"
+  },
+  "DESCRIPTION": "The <strong>Semantic AI Lab</strong> is a lab that lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eu nunc pretium, finibus quam in, varius urna. Nunc vestibulum at nibh at egestas. Nulla interdum iaculis dui, quis varius lacus elementum id. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed eu imperdiet felis. Etiam hendrerit id libero quis ultricies. Nunc molestie tellus ultrices elit molestie tincidunt. Mauris id interdum turpis. Nullam fermentum ornare arcu, id vehicula leo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus aliquam dignissim volutpat. Nunc sit amet varius risus. Curabitur ex libero, rhoncus tincidunt hendrerit et, feugiat ut purus.\nNunc id sodales odio, ut pretium tortor. Sed gravida semper est et finibus. Mauris vulputate fringilla nulla et pretium. Nulla facilisi. Maecenas scelerisque convallis dui tincidunt volutpat. Curabitur vitae feugiat tortor. Duis vitae turpis consequat, lacinia nisl vitae, lobortis nisi. Mauris aliquet, felis in blandit cursus, odio arcu suscipit sem, id blandit massa eros non nunc. Fusce ac sodales tellus, vel efficitur metus.\n In congue, justo at auctor consequat, dolor eros laoreet augue, sit amet molestie felis massa sed nunc. Curabitur at nibh et ipsum facilisis molestie. Donec dictum dapibus diam, sed fringilla tellus tincidunt ut. Nam porttitor in diam ut dapibus. Cras sit amet diam odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet eros quis sem imperdiet suscipit. Fusce luctus turpis ut metus convallis, ac ornare augue fermentum. Phasellus aliquet, elit eu tempus aliquam, odio est tristique quam, quis luctus augue lorem sit amet lorem. Quisque tellus sem, rutrum vitae hendrerit in, tempus vitae neque. Morbi blandit sagittis risus a placerat.",
+  "NEXT_SEMINAR_TEXT": "Next seminar",
+  "NEWS_TITLE": "News",
+  "FEEDS": {
+    "NO_NEW_FEEDS_MSG": "No up-to-date news"
+  },
+  "TEAM_TITLE": "Team",
+  "PROFESSORS_TITLE": "Professors",
+  "ASSOCIATE_PROFESSOR_TITLE": "Associate professor",
+  "RESEARCH_ASSOCIATE_TITLE": "Research associates",
+  "PHD_STUDENT_TITLE": "PhD students",
+  "MASTER_STUDENT_TITLE": "Master students",
+  "UNDERGRAD_STUDENT_TITLE": "Undergrad students",
+  "OLD_MEMBER_TITLE": "Past members",
+  "POST_PHD_STUDENT_TITLE": "Postdoctoral researchers",
+  "PROJECTS": {
+    "CURRENT_PROJECT_TITLE": "Current projects",
+    "PAST_PROJECT_TITLE": "Past projects",
+    "NO_CURRENT_PROJECTS_TXT": "No current projects",
+    "NO_PAST_PROJECTS_TXT": "No past projects",
+    "SUPERVISOR_TEXT": "Supervisor",
+    "COSUPERVISOR_TEXT": "Co-supervisor(s)",
+    "STUDENT_TITLE": "Student",
+    "PROJECT_NOT_FOUND_MSG": "Project not found",
+    "FOR_MORE_INFO_TXT": "For more information",
+    "CLICK_HERE_TXT": "click here"
+  },
+  "SEMINARS": {
+    "TITLE": "SemanticAI Seminars",
+    "NEXT_SEMINARS_TITLE": "Next seminars",
+    "PAST_SEMINARS_TITLE": "Past seminars",
+    "NO_NEXT_SEMINARS": "No next seminars",
+    "NO_PAST_SEMINARS": "No old seminars"
+  },
+  "CONTACT": {
+    "TITLE": "Contact us",
+    "LAB_LONG_TITLE": "Semantic and AI laboratory",
+    "DEPARTMENT_TITLE": "Computer and software engineering department",
+    "FOR_MORE_INFO_TXT": "For more information, contact"
+  },
+  "PUBLICATIONS": {
+    "TITLE": "Publications",
+    "CREATE_TITLE": "Publication creation",
+    "ERROR_INTRO_MSG": "There were errors in the form submission. Please correct them.",
+    "ADD_PUB": "Add publication",
+    "YEAR_TXT": "Year",
+    "MONTH_TXT": "Month",
+    "TITLE_TXT": "Title",
+    "AUTHOR_TXT": "Author",
+    "VENUE_TXT": "Venue",
+    "CREATE_TXT": "Create",
+    "SORT_BY_TXT": "Sort by",
+    "ORDER_BY_TXT": "Order by",
+    "ASC_TXT": "ascending",
+    "DESC_TXT": "descending",
+    "DISPLAY_TXT": "Display",
+    "RESULT_PER_PAGE_TXT": "results per page"
+  },
+  "FOOTER": {
+    "COPYRIGHT": "Private site"
+  },
+  "GENERAL": {
+    "OR": "or"
+  },
+  "ERRORS": {
+    "SERVICE_CONNECTION": "Web service connection error.",
+    "PROJECTS_ERROR": "Could not get projects.",
+    "PROJECT_ERROR": "Could not get project.",
+    "PROJECT_NOT_FOUND": "Could not find project with id: ",
+    "FEEDS_ERROR": "Could not get feeds.",
+    "MEMBERS_ERROR": "Could not get members.",
+    "PUBS_ERROR": "Could not get publications.",
+    "PUB_CREATE_ERROR": "Could not create publication.",
+    "PUB_DELETE_ERROR": "Could not create publication.",
+    "EMPTY_PUBLICATION_FORM": "Fields for creating a publication are empty.",
+    "AUTHOR_EMPTY_FORM": "Au moins un auteur doit être défini.",
+    "YEAR_NOT_INT_FORM": "The year field must be a whole value.",
+    "MONTH_ERROR_FORM": "Error in the selection of a month.",
+    "PUB_AT_LEAST_5_CHAR_FORM": "A publication title must have at least 5 characters.",
+    "VENUE_AT_LEAST_5_CHAR_FORM": "A publication venue must have at least 5 characters."
+  }
+}

@@ -1,0 +1,44 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    .container
+      header
+        div#logo-container
+          img#logo(src="/img/logo-coding.png", alt="Logo de Polydata")
+          div#hdr
+            p#sitetitle= t.SITE_TITLE
+            p#subtitle
+              = t.AI
+              br
+              = t.SEMANTIC_WEB
+        nav
+          ul.links
+            li
+              a#home-link(href="/")= t.NAV.HOME
+            li
+              a#team-link(href="/team")= t.NAV.TEAM
+            li
+              a#projects-link(href="/projects")= t.NAV.PROJECTS
+            li
+              a#publications-link(href="/publications")= t.NAV.PUBLICATIONS
+            li
+              div.dropdown
+                a.dropbtn.language #{lang} #[i.fa.fa-caret-down]
+                div.dropdown-content
+                  a(class=(lang === 'fr') ? 'active' : '', href="/?clang=fr") FR
+                  a(class=(lang === 'en') ? 'active' : '', href="/?clang=en") EN
+
+      main
+        block content
+
+      footer.main
+        p= t.FOOTER.COPYRIGHT
+        p LOG4420 - Polytechnique Montréal, Québec
+
+    script(src="/jspm_packages/system.js")
+    script(src="/config.js")
+    block script-content
+

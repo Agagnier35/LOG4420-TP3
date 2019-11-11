@@ -1,0 +1,95 @@
+{
+  "SITE_TITLE": "Labo Semantic IA",
+  "AI": "Intelligence artificielle",
+  "SEMANTIC_WEB": "Web sémantique",
+  "NAV": {
+    "HOME": "Accueil",
+    "TEAM": "Équipe",
+    "PROJECTS": "Projets",
+    "PUBLICATIONS": "Publications",
+    "SEMINARS": "Seminaires",
+    "ABOUT": "À propos",
+    "CONTACT": "Contact"
+  },
+  "DESCRIPTION": "Le <strong>laboratoire Semantic IA</strong> est un laboratoire de recherche qui lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eu nunc pretium, finibus quam in, varius urna. Nunc vestibulum at nibh at egestas. Nulla interdum iaculis dui, quis varius lacus elementum id. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed eu imperdiet felis. Etiam hendrerit id libero quis ultricies. Nunc molestie tellus ultrices elit molestie tincidunt. Mauris id interdum turpis. Nullam fermentum ornare arcu, id vehicula leo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus aliquam dignissim volutpat. Nunc sit amet varius risus. Curabitur ex libero, rhoncus tincidunt hendrerit et, feugiat ut purus.\nNunc id sodales odio, ut pretium tortor. Sed gravida semper est et finibus. Mauris vulputate fringilla nulla et pretium. Nulla facilisi. Maecenas scelerisque convallis dui tincidunt volutpat. Curabitur vitae feugiat tortor. Duis vitae turpis consequat, lacinia nisl vitae, lobortis nisi. Mauris aliquet, felis in blandit cursus, odio arcu suscipit sem, id blandit massa eros non nunc. Fusce ac sodales tellus, vel efficitur metus.\n In congue, justo at auctor consequat, dolor eros laoreet augue, sit amet molestie felis massa sed nunc. Curabitur at nibh et ipsum facilisis molestie. Donec dictum dapibus diam, sed fringilla tellus tincidunt ut. Nam porttitor in diam ut dapibus. Cras sit amet diam odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet eros quis sem imperdiet suscipit. Fusce luctus turpis ut metus convallis, ac ornare augue fermentum. Phasellus aliquet, elit eu tempus aliquam, odio est tristique quam, quis luctus augue lorem sit amet lorem. Quisque tellus sem, rutrum vitae hendrerit in, tempus vitae neque. Morbi blandit sagittis risus a placerat.",
+  "NEXT_SEMINAR_TEXT": "Prochain séminaire",
+  "NEWS_TITLE": "Nouvelles",
+  "FEEDS": {
+    "NO_NEW_FEEDS_MSG": "Aucun nouvelle"
+  },
+  "TEAM_TITLE": "Équipe",
+  "PROFESSORS_TITLE": "Professeurs",
+  "ASSOCIATE_PROFESSOR_TITLE": "Professeur associé",
+  "RESEARCH_ASSOCIATE_TITLE": "Associés de recherche",
+  "PHD_STUDENT_TITLE": "Étudiants au doctorat",
+  "MASTER_STUDENT_TITLE": "Étudiants à la maîtrise",
+  "UNDERGRAD_STUDENT_TITLE": "Étudiants au baccalauréat",
+  "OLD_MEMBER_TITLE": "Anciens membres",
+  "POST_PHD_STUDENT_TITLE": "Chercheurs au post-doctorat",
+  "PROJECTS": {
+    "CURRENT_PROJECT_TITLE": "Projets en cours",
+    "PAST_PROJECT_TITLE": "Projets passés",
+    "NO_CURRENT_PROJECTS_TXT": "Aucun project en cours",
+    "NO_PAST_PROJECTS_TXT": "Aucun project passé",
+    "SUPERVISOR_TEXT": "Directeur(e)",
+    "COSUPERVISOR_TEXT": "Co-directeur(e)(s)",
+    "STUDENT_TITLE": "Étudiant",
+    "PROJECT_NOT_FOUND_MSG": "Projet inexistant",
+    "FOR_MORE_INFO_TXT": "Pour plus d'informations",
+    "CLICK_HERE_TXT": "cliquez ici"
+  },
+  "SEMINARS": {
+    "TITLE": "Séminaires SemanticIA",
+    "NEXT_SEMINARS_TITLE": "Prochain(s) séminaire(s)",
+    "PAST_SEMINARS_TITLE": "Séminaires passés",
+    "NO_NEXT_SEMINARS": "Aucun nouveau séminaire",
+    "NO_PAST_SEMINARS": "Aucun ancien séminaire"
+  },
+  "CONTACT": {
+    "TITLE": "Nous joindre",
+    "LAB_LONG_TITLE": "Laboratoire de Web sémantique et d'intelligence artificielle",
+    "DEPARTMENT_TITLE": "Département de génie informatique et logiciel",
+    "FOR_MORE_INFO_TXT": "Pour plus d'informations, contactez"
+  },
+  "PUBLICATIONS": {
+    "TITLE": "Publications",
+    "CREATE_TITLE": "Création d'une publication",
+    "ERROR_INTRO_MSG": "Il y a des erreurs dans la soumission du formulaire. Veuillez les corriger.",
+    "ADD_PUB": "Ajouter une publication",
+    "YEAR_TXT": "Année",
+    "MONTH_TXT": "Mois",
+    "TITLE_TXT": "Titre",
+    "AUTHOR_TXT": "Auteur",
+    "VENUE_TXT": "Revue",
+    "CREATE_TXT": "Créer",
+    "SORT_BY_TXT": "Trié par",
+    "ORDER_BY_TXT": "Ordonner par",
+    "ASC_TXT": "croissant",
+    "DESC_TXT": "décroissant",
+    "DISPLAY_TXT": "Afficher",
+    "RESULT_PER_PAGE_TXT": "résultats par page"
+  },
+  "FOOTER": {
+    "COPYRIGHT": "Site privé"
+  },
+  "GENERAL": {
+    "OR": "ou"
+  },
+  "ERRORS": {
+    "SERVICE_CONNECTION": "Web service connection error.",
+    "PROJECTS_ERROR": "Could not get projects.",
+    "PROJECT_ERROR": "Could not get project.",
+    "PROJECT_NOT_FOUND": "Could not find project with id: ",
+    "FEEDS_ERROR": "Could not get feeds.",
+    "MEMBERS_ERROR": "Could not get members.",
+    "PUBS_ERROR": "Could not get publications.",
+    "PUB_CREATE_ERROR": "Could not create publication.",
+    "PUB_DELETE_ERROR": "Could not create publication.",
+    "EMPTY_PUBLICATION_FORM": "Fields for creating a publication are empty.",
+    "AUTHOR_EMPTY_FORM": "Au moins un auteur doit être défini.",
+    "YEAR_NOT_INT_FORM": "The year field must be a whole value.",
+    "MONTH_ERROR_FORM": "Error in the selection of a month.",
+    "PUB_AT_LEAST_5_CHAR_FORM": "A publication title must have at least 5 characters.",
+    "VENUE_AT_LEAST_5_CHAR_FORM": "A publication venue must have at least 5 characters."
+  }
+}
