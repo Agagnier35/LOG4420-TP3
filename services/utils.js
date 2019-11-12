@@ -14,10 +14,10 @@
  */
 exports.getTranslation = (language, field) => {
   if (field === undefined) {
-    return ''
+    return "";
   } else if (language in field) {
-    return field[language]
+    return field[language];
   } else {
-    return field['fr']
+    return field["fr"];
   }
-}
+};

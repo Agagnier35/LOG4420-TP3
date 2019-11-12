@@ -1,9 +1,10 @@
 const express = require("express");
+const { promisify } = require("util");
 
 module.exports = servicePublication => {
   const router = express.Router();
 
-  router.get("/", (req, res, next) => {
+  router.get("/", async (req, res, next) => {
     const { t } = req.app.locals;
     const { limit, page, sort_by, order_by } = req.query;
     const sorting = [];
@@ -42,26 +43,26 @@ module.exports = servicePublication => {
       limit: limit || 10,
       sorting
     };
-
-    servicePublication.getPublications(pagingOpts)((err, data) => {
-      if (err) {
-        res.statusCode = 500;
-        const errorsMsg = t["ERRORS"]["PUBS_ERROR"];
-        const errors = errorsMsg ? [errorsMsg] : err.message;
-        res.json({ errors });
-        return;
-      }
-
-      const publications = data.map((p, i) => {
+    const getPublicationsAsync = promisify(
+      servicePublication.getPublications(pagingOpts)
+    );
+    try {
+      const data = await getPublicationsAsync();
+      const publications = data.map(p => {
         const { key, ...rest } = p;
         return { _id: key, ...rest };
       });
       res.statusCode = 200;
       res.json(publications);
-    });
+    } catch (err) {
+      res.statusCode = 500;
+      const errorsMsg = t["ERRORS"]["PUBS_ERROR"];
+      const errors = errorsMsg ? [errorsMsg] : err.message;
+      res.json({ errors });
+    }
   });
 
-  router.post("/", (req, res, next) => {
+  router.post("/", async (req, res, next) => {
     const { t } = req.app.locals;
     const { body } = req;
     const errors = [];
@@ -98,45 +99,46 @@ module.exports = servicePublication => {
       res.json({ errors });
       return;
     }
+    const createPublicationAsync = promisify(
+      servicePublication.createPublication(body)
+    );
+    try {
+      await createPublicationAsync();
+      res.statusCode = 201;
+      res.end();
+    } catch (err) {
+      res.statusCode = 500;
+      const errorsMsg = t["ERRORS"]["PUB_CREATE_ERROR"];
+      const errors = errorsMsg ? [errorsMsg] : err.message;
+      res.json({ errors });
+    }
+  });
 
-    servicePublication.createPublication(body)(err => {
-      if (err) {
+  router.delete("/:id", async (req, res, next) => {
+    const { t } = req.app.locals;
+    const { id } = req.params;
+    const removePublicationAsync = promisify(
+      servicePublication.removePublication(id)
+    );
+    try {
+      await removePublicationAsync();
+      res.statusCode = 200;
+      res.end();
+    } catch (err) {
+      if (err.name === "NOT_FOUND") {
+        res.statusCode = 404;
+        const errorsMsg = t["ERRORS"]["PUB_NOT_FOUND_ERROR"];
+        const errors = errorsMsg ? [errorsMsg] : err.message;
+        res.json({ errors });
+        return;
+      } else {
         res.statusCode = 500;
-        const errorsMsg = t["ERRORS"]["PUB_CREATE_ERROR"];
+        const errorsMsg = t["ERRORS"]["PUB_DELETE_ERROR"];
         const errors = errorsMsg ? [errorsMsg] : err.message;
         res.json({ errors });
         return;
       }
-
-      res.statusCode = 201;
-      res.end();
-    });
-  });
-
-  router.delete("/:id", (req, res, next) => {
-    const { t } = req.app.locals;
-    const { id } = req.params;
-
-    servicePublication.removePublication(id)(err => {
-      if (err) {
-        if (err.name === "NOT_FOUND") {
-          res.statusCode = 404;
-          const errorsMsg = t["ERRORS"]["PUB_NOT_FOUND_ERROR"];
-          const errors = errorsMsg ? [errorsMsg] : err.message;
-          res.json({ errors });
-          return;
-        } else {
-          res.statusCode = 500;
-          const errorsMsg = t["ERRORS"]["PUB_DELETE_ERROR"];
-          const errors = errorsMsg ? [errorsMsg] : err.message;
-          res.json({ errors });
-          return;
-        }
-      }
-
-      res.statusCode = 200;
-      res.end();
-    });
+    }
   });
 
   return router;

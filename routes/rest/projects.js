@@ -1,38 +1,15 @@
 const express = require("express");
-
-const fetchPublications = (servicePublication, publicationsIds) => {
-  return new Promise((resolve, reject) => {
-    servicePublication.getPublicationsByIds(publicationsIds)((err, data) => {
-      if (err) {
-        const errorsMsg = t["ERRORS"]["PUB_NOT_FOUND_ERROR"];
-        const errorPub = errorsMsg ? [errorsMsg] : err.message;
-        reject(errorPub);
-      } else {
-        resolve(
-          data.map(pub => {
-            const { key, ...rest } = pub;
-            return { _id: key, ...rest };
-          })
-        );
-      }
-    });
-  });
-};
+const { promisify } = require("util");
 
 module.exports = (serviceProjects, servicePublication) => {
   const router = express.Router();
 
-  router.get("/", (req, res, next) => {
+  router.get("/", async (req, res, next) => {
     const { t, lang } = req.app.locals;
-    serviceProjects.getProjects(lang)(async (err, data) => {
-      if (err) {
-        res.statusCode = 500;
-        const errorsMsg = t["ERRORS"]["PROJECTS_ERROR"];
-        const errors = errorsMsg ? [errorsMsg] : err.message;
-        res.json({ errors });
-        return;
-      }
+    const getProjectsAsync = promisify(serviceProjects.getProjects(lang));
 
+    try {
+      const data = await getProjectsAsync();
       const projects = data.map(async p => {
         const {
           publications: publicationsIds,
@@ -43,14 +20,20 @@ module.exports = (serviceProjects, servicePublication) => {
           ...project
         } = p;
 
-        const publications = await fetchPublications(
-          servicePublication,
-          publicationsIds
+        const getPublicationsByIds = promisify(
+          servicePublication.getPublicationsByIds(publicationsIds)
         );
-        return {
-          project: { ...project, publications: publicationsIds },
-          publications
-        };
+        try {
+          const publications = await getPublicationsByIds();
+          return {
+            project: { ...project, publications: publicationsIds },
+            publications
+          };
+        } catch (err2) {
+          const errorsMsg = t["ERRORS"]["PUB_NOT_FOUND_ERROR"];
+          const errorPub = errorsMsg ? [errorsMsg] : err.message;
+          throw new error(errorPub);
+        }
       });
 
       Promise.all(projects)
@@ -62,30 +45,24 @@ module.exports = (serviceProjects, servicePublication) => {
           res.statusCode = 500;
           res.json({ errors });
         });
-    });
+    } catch (err) {
+      res.statusCode = 500;
+      const errorsMsg = t["ERRORS"]["PROJECTS_ERROR"];
+      const errors = errorsMsg ? [errorsMsg] : err.message;
+      res.json({ errors });
+    }
   });
 
-  router.get("/:id", (req, res, next) => {
+  router.get("/:id", async (req, res, next) => {
     const { t, lang } = req.app.locals;
     const { id } = req.params;
 
-    serviceProjects.getProjectById(t)(lang)(id)(async (err, data) => {
-      if (err) {
-        if (err.name == "NOT_FOUND") {
-          res.statusCode = 404;
-          const errorsMsg = t["ERRORS"]["PROJECT_NOT_FOUND_ERROR"];
-          const errors = errorsMsg ? [errorsMsg] : err.message;
-          res.json({ errors });
-          return;
-        } else {
-          res.statusCode = 500;
-          const errorsMsg = t["ERRORS"]["PROJECT_ERROR"];
-          const errors = errorsMsg ? [errorsMsg] : err.message;
-          res.json({ errors });
-          return;
-        }
-      }
+    const getProjectByIdAsync = promisify(
+      serviceProjects.getProjectById(t)(lang)(id)
+    );
 
+    try {
+      const data = await getProjectByIdAsync();
       const {
         publications: publicationsIds,
         thesisUrl,
@@ -95,19 +72,37 @@ module.exports = (serviceProjects, servicePublication) => {
         ...projectData
       } = data;
 
-      const publications = await fetchPublications(
-        servicePublication,
-        publicationsIds
+      const getPublicationsByIds = promisify(
+        servicePublication.getPublicationsByIds(publicationsIds)
       );
-
-      const project = {
-        project: { ...projectData, publications: publicationsIds },
-        publications
-      };
-
-      res.statusCode = 200;
-      res.json(project);
-    });
+      try {
+        const publications = await getPublicationsByIds();
+        const project = {
+          project: { ...projectData, publications: publicationsIds },
+          publications
+        };
+        res.statusCode = 200;
+        res.json(project);
+      } catch (err2) {
+        const errorsMsg = t["ERRORS"]["PUB_NOT_FOUND_ERROR"];
+        const errorPub = errorsMsg ? [errorsMsg] : err.message;
+        throw new error(errorPub);
+      }
+    } catch (err) {
+      if (err.name == "NOT_FOUND") {
+        res.statusCode = 404;
+        const errorsMsg = t["ERRORS"]["PROJECT_NOT_FOUND_ERROR"];
+        const errors = errorsMsg ? [errorsMsg] : err.message;
+        res.json({ errors });
+        return;
+      } else {
+        res.statusCode = 500;
+        const errorsMsg = t["ERRORS"]["PROJECT_ERROR"];
+        const errors = errorsMsg ? [errorsMsg] : err.message;
+        res.json({ errors });
+        return;
+      }
+    }
   });
 
   return router;
