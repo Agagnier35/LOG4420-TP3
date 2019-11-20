@@ -32,6 +32,7 @@ const getProjects = db => language => callback => {
             publications: (project.publications === undefined) ? [] : project.publications
           }
         })
+      // console.log(results)
       callback(null, results)
     }
   });
