@@ -48,7 +48,7 @@ const insertDataIntoMongo = async () => {
 
     //4. Insert project & publications with relation
     const dataPublications = await readFile("./data/publications.yml");
-    const filteredPulications = dataPublications.map(p => {
+    const filteredPublications = dataPublications.map(p => {
       const { key, ...rest } = p;
       return { ...rest };
     });
@@ -56,7 +56,7 @@ const insertDataIntoMongo = async () => {
 
     const { insertedIds, insertedCount } = await db
       .collection("publications")
-      .insertMany(filteredPulications)
+      .insertMany(filteredPublications)
       .catch(err => console.log(err));
     console.log(
       `Inserted ${insertedCount} entries into collection publications`
@@ -71,7 +71,7 @@ const insertDataIntoMongo = async () => {
       const { publications, ...rest } = p;
       const linkedPublications = publications
         ? publications.map(
-            pub => rebuiltPublications.find(rb => rb.key === pub).id
+            pub => rebuiltPublications.find(rb => rb.key === pub)._id
           )
         : [];
       return { ...rest, publications: linkedPublications };
@@ -85,7 +85,7 @@ const insertDataIntoMongo = async () => {
       `Inserted ${insertedCountProj} entries into collection projects`
     );
   } finally {
-    client.close();
+    client && client.close();
   }
 };
 
