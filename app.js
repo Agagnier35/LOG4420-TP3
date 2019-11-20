@@ -90,7 +90,7 @@ app.use((err, req, res, next) => {
 });
 
 // Amorçage de l'application web avec la base de données
-MongoClient.connect(config.dbUrl, { useNewUrlParser: true }, (err, client) => {
+MongoClient.connect(config.dbUrl, { useNewUrlParser: true, useUnifiedTopology: true }, (err, client) => {
   if (err) console.log(err);
 
   app.db = client.db(config.dbName);

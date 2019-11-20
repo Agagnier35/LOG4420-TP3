@@ -17,8 +17,25 @@ const { getTranslation } = require('../utils')
  *  @param {newsCallback} callback - Fonction de rappel pour obtenir le résultat
  */
 const getNews = db => language => callback => {
-  // À COMPLÉTER
-  callback(null, [])
+  db.collection("news").find().toArray((err, data) => {
+    if (err) callback(err,null);
+    else {
+      console.log(data);
+      const news = ((data === null) ? [] : data)
+        .map(s => {
+          const translatedText = getTranslation(language, s.text)
+          const newCreatedAtDate = moment(s.createdAt, 'YYYY-MM-DD HH:mm:ss').toDate()
+          return {
+            ...s,
+            text: translatedText,
+            type: 'news',
+            createdAt: newCreatedAtDate
+          }
+        })
+      callback(null, news)
+    }
+  });
+
 }
 
 module.exports = db => {
