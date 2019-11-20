@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
   router.use('/feed', require('./feed')(factory.feed))
   router.use('/members', require('./members')(factory.members))
   router.use('/projects', require('./projects')(factory.projects, factory.publications))
-  router.use('/projects', require('./projects')(factory.projects, factory.publications))
+  // router.use('/projects', require('./projects')(factory.projects, factory.publications))
   router.use('/publications', require('./publications')(factory.publications))
 
   return router(req, res, next)

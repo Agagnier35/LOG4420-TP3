@@ -56,7 +56,7 @@ const getProjects = db => language => callback => {
  *  @param {projectCallback} callback - Fonction de rappel pour obtenir le résultat
  */
 const getProjectById = db => translationObj => language => id => callback => {
-  getProjects(db)(language)((err, projects) => {
+  db.collection("projects").find({_id : id}, (err, project) => {
     if (err) callback(err, null);
     else {
       if (project) {
