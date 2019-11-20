@@ -47,9 +47,60 @@ const getNumberOfPublications = db => callback => {
  *  @param {publicationsCallback} callback - Fonction de rappel pour obtenir le résultat
  */
 const getPublications = db => pagingOpts => callback => {
-  // À COMPLÉTER
-  callback(null, [])
+  db.collection("publications").find().toArray((err, data) => {
+    if (err) callback(err, null); 
+    else {
+      const publications = (data === null ? [] : data)
+        .sort(pagingOpts.sorting ? comparePublications(pagingOpts) : () => {})
+        .map(publication => {
+          return {
+            ...publication,
+            month:
+              publication.month === undefined
+                ? undefined
+                : moment()
+                    .month(publication.month - 1)
+                    .format("MMMM")
+          };
+        });
+
+      if (
+        pagingOpts === undefined ||
+        pagingOpts.pageNumber === undefined ||
+        pagingOpts.limit === undefined
+      ) {
+        callback(null, publications);
+      } else {
+        const startIndex = (pagingOpts.pageNumber - 1) * pagingOpts.limit;
+        const endIndex = startIndex + pagingOpts.limit;
+        const topNPublications = publications.slice(startIndex, endIndex);
+        callback(null, topNPublications);
+      }
+    }
+  });
 }
+
+/**
+ *  Fonction de comparaison de publications.
+ *
+ *  @param pagingOpts - Options pour la pagination qui contient entre autre
+ *    des options pour le trie
+ *  @param p1 - Première publication à comparer
+ *  @param p2 - Deuxième publication à comparer
+ *  @returns Valeurs de comparaison -1, 1 ou 0
+ */
+const comparePublications = pagingOpts => (p1, p2) => {
+  return pagingOpts.sorting.reduce((acc, sort) => {
+    if (acc === 0) {
+      const field = sort[0];
+      const order = sort[1];
+      const compare =
+        p1[field] < p2[field] ? -1 : p1[field] > p2[field] ? 1 : 0;
+      return order === "asc" ? compare : order === "desc" ? -compare : compare;
+    }
+    return acc;
+  }, 0);
+};
 
 /**
  * Fonction de rappel pour obtenir la publication créée.
@@ -67,8 +118,9 @@ const getPublications = db => pagingOpts => callback => {
  *  @param {createdPublicationCallback} callback - Fonction de rappel pour obtenir la publication créée
  */
 const createPublication = db => publication => callback => {
-  // À COMPLÉTER
-  callback()
+  db.collection('publications').insertOne(publication, (err, publication) => {
+		err ? callback(err, null) : callback(null, publication);
+  });
 }
 
 /**
@@ -79,8 +131,9 @@ const createPublication = db => publication => callback => {
  *  @param callback - Fonction de rappel qui valide la suppression
  */
 const removePublication = db => id => callback => {
-  // À COMPLÉTER
-  callback()
+  db.collection('publications').deleteOne({_id : id}, (err, publication) => {
+		err ? callback(err, null) : callback(null, publication);
+  });
 }
 
 /**
@@ -99,8 +152,17 @@ const removePublication = db => id => callback => {
  *  @param {projectPublicationsCallback} callback - Fonction de rappel pour obtenir le résultat
  */
 const getPublicationsByIds = db => pubIds => callback => {
-  // À COMPLÉTER
-  callback(null, [])
+  db.collection("publications").find({_id: {$in : pubIds}}).toArray((err, data) => {
+    if (err) callback(err, null);
+    else {
+      callback(
+        null,
+        data
+          .filter(publication => pubIds.includes(publication.key))
+          .sort((p1, p2) => (p1.year < p2.year ? 1 : -1))
+      );
+    }
+  });
 }
 
 module.exports = db => {
