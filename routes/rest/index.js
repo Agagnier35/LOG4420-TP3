@@ -3,8 +3,8 @@ const router = express.Router();
 
 module.exports = (req, res, next) => {
   // À CHANGER LORSQUE VOUS COMMENCEREZ LA PARTIE MONGODB
-  //const factory = require('../../services/mongo/factory')(req.app.db)
-  const factory = require("../../services/yaml/factory")(require("fs"));
+  const factory = require('../../services/mongo/factory')(req.app.db)
+  // const factory = require("../../services/yaml/factory")(require("fs"));
 
   router.use("/feed", require("./feed")(factory.feed));
   router.use("/members", require("./members")(factory.members));

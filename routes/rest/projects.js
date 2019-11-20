@@ -13,10 +13,10 @@ module.exports = (serviceProjects, servicePublication) => {
       const projects = data.map(async p => {
         const {
           publications: publicationsIds,
-          thesisUrl,
-          description,
-          title,
-          year,
+          // thesisUrl,
+          // description,
+          // title,
+          // year,
           ...project
         } = p;
 
@@ -65,10 +65,10 @@ module.exports = (serviceProjects, servicePublication) => {
       const data = await getProjectByIdAsync();
       const {
         publications: publicationsIds,
-        thesisUrl,
-        description,
-        title,
-        year,
+        // thesisUrl,
+        // description,
+        // title,
+        // year,
         ...projectData
       } = data;
 

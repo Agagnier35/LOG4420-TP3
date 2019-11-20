@@ -31,7 +31,7 @@ router.get("/:id", (req, res, next) => {
       // 	publications: project.publications
       // };
 
-      res.render("./../views/project", projectObj, (err, body) => {
+      res.render("./../views/project", project, (err, body) => {
         err ? next(err) : res.send(body);
       });
     });
