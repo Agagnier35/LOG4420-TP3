@@ -4,7 +4,7 @@ const moment = require('moment')
 const fetch = require('node-fetch')
 
 router.get('/', getPublications);
-router.post('/', savePublication, getPublications);
+router.post('/', addPublication, getPublications);
 
 function getPublications(req, res, next) {
     const fetchOpts = {
@@ -37,13 +37,13 @@ function getPublications(req, res, next) {
         });
 }
 
-function savePublication(req, res, next) {
-    const opts = {
+function addPublication(req, res, next) {
+    const fetchOpts = {
         methods: 'POST',
         headers: { Cookie: `ulang=${req.app.locals.lang}` }
     };
 
-    fetch('http://localhost:3000/api/publications/', opts)
+    fetch('http://localhost:3000/api/publications/', fetchOpts)
         .then(response => next());
 }
 
