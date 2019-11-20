@@ -20,7 +20,6 @@ const getNews = db => language => callback => {
   db.collection("news").find().toArray((err, data) => {
     if (err) callback(err,null);
     else {
-      console.log(data);
       const news = ((data === null) ? [] : data)
         .map(s => {
           const translatedText = getTranslation(language, s.text)
