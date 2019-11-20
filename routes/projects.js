@@ -26,12 +26,8 @@ router.get("/:id", (req, res, next) => {
   fetch("http://localhost:3000/api/project/" + req.params.id, headers)
     .then(response => response.json())
     .then(project => {
-      // const projectObj = {
-      // 	project: project.project,
-      // 	publications: project.publications
-      // };
 
-      res.render("./../views/project", project, (err, body) => {
+      res.render("./../views/project", { project: data.map(d => d.project).filter({_id : req.params.id}) }, (err, body) => {
         err ? next(err) : res.send(body);
       });
     });

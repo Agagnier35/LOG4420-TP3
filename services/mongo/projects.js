@@ -62,7 +62,6 @@ const getProjectById = db => translationObj => language => id => callback => {
       if (project) {
         project.title = getTranslation(language, project.title);
         project.description = getTranslation(language, project.description);
-  
         callback(null, project);
       } else {
         const errorMsg = translationObj === undefined && translationObj['PROJECTS'] === undefined && translationObj['PROJECTS']['PROJECT_NOT_FOUND_MSG'] === undefined ? `${id} not found` : translationObj['PROJECTS'['PROJECT_NOT_FOUND_MSG']]
