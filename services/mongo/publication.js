@@ -16,8 +16,13 @@ const mongodb = require('mongodb')
  *  @param {numPublicationsCallback} callback - Fonction de rappel pour obtenir le résultat
  */
 const getNumberOfPublications = db => callback => {
-  // À COMPLÉTER
-  callback(null, 0)
+  db.collection("publications").find().toArray((err, data)  => {
+    if (err) callback(err,null);
+    else {
+      const publications = ((data === null) ? [] : data)
+      callback(null, publications.length)
+    }
+  });
 }
 
 /**
