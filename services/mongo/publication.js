@@ -1,5 +1,5 @@
-const moment = require('moment')
-const mongodb = require('mongodb')
+const moment = require("moment");
+const mongodb = require("mongodb");
 
 /**
  * Fonction de rappel pour récupérer le nombre total de publications
@@ -16,14 +16,16 @@ const mongodb = require('mongodb')
  *  @param {numPublicationsCallback} callback - Fonction de rappel pour obtenir le résultat
  */
 const getNumberOfPublications = db => callback => {
-  db.collection("publications").find().toArray((err, data)  => {
-    if (err) callback(err,null);
-    else {
-      const publications = ((data === null) ? [] : data)
-      callback(null, publications.length)
-    }
-  });
-}
+  db.collection("publications")
+    .find()
+    .toArray((err, data) => {
+      if (err) callback(err, null);
+      else {
+        const publications = data === null ? [] : data;
+        callback(null, publications.length);
+      }
+    });
+};
 
 /**
  * Fonction de rappel pour récupérer les publications.
@@ -47,38 +49,40 @@ const getNumberOfPublications = db => callback => {
  *  @param {publicationsCallback} callback - Fonction de rappel pour obtenir le résultat
  */
 const getPublications = db => pagingOpts => callback => {
-  db.collection("publications").find().toArray((err, data) => {
-    if (err) callback(err, null); 
-    else {
-      const publications = (data === null ? [] : data)
-        .sort(pagingOpts.sorting ? comparePublications(pagingOpts) : () => {})
-        .map(publication => {
-          return {
-            ...publication,
-            month:
-              publication.month === undefined
-                ? undefined
-                : moment()
-                    .month(publication.month - 1)
-                    .format("MMMM")
-          };
-        });
+  db.collection("publications")
+    .find()
+    .toArray((err, data) => {
+      if (err) callback(err, null);
+      else {
+        const publications = (data === null ? [] : data)
+          .sort(pagingOpts.sorting ? comparePublications(pagingOpts) : () => {})
+          .map(publication => {
+            return {
+              ...publication,
+              month:
+                publication.month === undefined
+                  ? undefined
+                  : moment()
+                      .month(publication.month - 1)
+                      .format("MMMM")
+            };
+          });
 
-      if (
-        pagingOpts === undefined ||
-        pagingOpts.pageNumber === undefined ||
-        pagingOpts.limit === undefined
-      ) {
-        callback(null, publications);
-      } else {
-        const startIndex = (pagingOpts.pageNumber - 1) * pagingOpts.limit;
-        const endIndex = startIndex + pagingOpts.limit;
-        const topNPublications = publications.slice(startIndex, endIndex);
-        callback(null, topNPublications);
+        if (
+          pagingOpts === undefined ||
+          pagingOpts.pageNumber === undefined ||
+          pagingOpts.limit === undefined
+        ) {
+          callback(null, publications);
+        } else {
+          const startIndex = (pagingOpts.pageNumber - 1) * pagingOpts.limit;
+          const endIndex = startIndex + pagingOpts.limit;
+          const topNPublications = publications.slice(startIndex, endIndex);
+          callback(null, topNPublications);
+        }
       }
-    }
-  });
-}
+    });
+};
 
 /**
  *  Fonction de comparaison de publications.
@@ -118,10 +122,10 @@ const comparePublications = pagingOpts => (p1, p2) => {
  *  @param {createdPublicationCallback} callback - Fonction de rappel pour obtenir la publication créée
  */
 const createPublication = db => publication => callback => {
-  db.collection('publications').insertOne(publication, (err, publication) => {
-		err ? callback(err, null) : callback(null, publication);
+  db.collection("publications").insertOne(publication, (err, publication) => {
+    err ? callback(err, null) : callback(null, publication);
   });
-}
+};
 
 /**
  *  Supprimer une publication avec un ID spécifique
@@ -131,10 +135,10 @@ const createPublication = db => publication => callback => {
  *  @param callback - Fonction de rappel qui valide la suppression
  */
 const removePublication = db => id => callback => {
-  db.collection('publications').deleteOne({_id : id}, (err, publication) => {
-		err ? callback(err, null) : callback(null, publication);
+  db.collection("publications").deleteOne({ _id: id }, (err, publication) => {
+    err ? callback(err, null) : callback(null, publication);
   });
-}
+};
 
 /**
  * Fonction de rappel pour récupérer les publications d'un projet.
@@ -152,18 +156,18 @@ const removePublication = db => id => callback => {
  *  @param {projectPublicationsCallback} callback - Fonction de rappel pour obtenir le résultat
  */
 const getPublicationsByIds = db => pubIds => callback => {
-  db.collection("publications").find({_id: {$in : pubIds}}).toArray((err, data) => {
-    if (err) callback(err, null);
-    else {
-      callback(
-        null,
-        data
-          .filter(publication => pubIds.includes(publication.key))
-          .sort((p1, p2) => (p1.year < p2.year ? 1 : -1))
-      );
-    }
-  });
-}
+  db.collection("publications")
+    .find({ _id: { $in: pubIds } })
+    .toArray((err, data) => {
+      if (err) callback(err, null);
+      else {
+        callback(
+          null,
+          data.sort((p1, p2) => (p1.year < p2.year ? 1 : -1))
+        );
+      }
+    });
+};
 
 module.exports = db => {
   return {
@@ -172,5 +176,5 @@ module.exports = db => {
     removePublication: removePublication(db),
     getPublicationsByIds: getPublicationsByIds(db),
     getNumberOfPublications: getNumberOfPublications(db)
-  }
-}
+  };
+};
