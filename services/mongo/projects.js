@@ -17,8 +17,24 @@ const ObjectId = require('mongodb').ObjectId
  *  @param {projectsCallback} callback - Fonction de rappel pour obtenir le résultat
  */
 const getProjects = db => language => callback => {
-  // À COMPLÉTER
-  callback(null, [])
+  db.collection("projects").find().toArray((err, data) => {
+    if (err) callback(err, null);
+    else {
+      const results = ((data === null) ? [] : data)
+        // .sort((p1, p2) => p1.year < p2.year ? 1 : p1.year > p2.year ? -1 : 0)
+        .map(project => {
+          const translatedTitle = getTranslation(language, project.title)
+          const translatedDescription = getTranslation(language, project.description)
+          return {
+            ...project,
+            title: translatedTitle,
+            description: translatedDescription,
+            publications: (project.publications === undefined) ? [] : project.publications
+          }
+        })
+      callback(null, results)
+    }
+  });
 }
 
 /**
@@ -39,8 +55,23 @@ const getProjects = db => language => callback => {
  *  @param {projectCallback} callback - Fonction de rappel pour obtenir le résultat
  */
 const getProjectById = db => translationObj => language => id => callback => {
-  // À COMPLÉTER
-  callback()
+  getProjects(db)(language)((err, projects) => {
+    if (err) callback(err, null);
+    else {
+      if (project) {
+        project.title = getTranslation(language, project.title);
+        project.description = getTranslation(language, project.description);
+  
+        callback(null, project);
+      } else {
+        const errorMsg = translationObj === undefined && translationObj['PROJECTS'] === undefined && translationObj['PROJECTS']['PROJECT_NOT_FOUND_MSG'] === undefined ? `${id} not found` : translationObj['PROJECTS'['PROJECT_NOT_FOUND_MSG']]
+        const error = new Error(errorMsg)
+        error.name = 'NOT_FOUND'
+        callback(error, null)
+      }
+    }
+  })
+
 }
 
 module.exports = db => {
