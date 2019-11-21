@@ -33,7 +33,7 @@ module.exports = servicePublication => {
       order_by.forEach((o, i) => {
         sorting.push([i == 0 ? sort_by : "date", o]);
       });
-    } else {
+    } else if (sort_by && order_by) {
       // both are strings
       sorting.push([sort_by, order_by]);
     }
@@ -43,6 +43,7 @@ module.exports = servicePublication => {
       limit: limit || 10,
       sorting
     };
+
     const getPublicationsAsync = promisify(
       servicePublication.getPublications(pagingOpts)
     );
@@ -55,6 +56,7 @@ module.exports = servicePublication => {
       res.statusCode = 200;
       res.json(publications);
     } catch (err) {
+      console.err(err);
       res.statusCode = 500;
       const errorsMsg = t["ERRORS"]["PUBS_ERROR"];
       const errors = errorsMsg ? [errorsMsg] : err.message;
@@ -66,6 +68,7 @@ module.exports = servicePublication => {
     const { t } = req.app.locals;
     const { body } = req;
     const errors = [];
+
     if (Object.entries(body).length === 0 && body.constructor === Object) {
       // {}
       errors.push([t["ERRORS"]["PUB_CREATE_ERROR"]]);
@@ -105,7 +108,7 @@ module.exports = servicePublication => {
     try {
       await createPublicationAsync();
       res.statusCode = 201;
-      res.end();
+      res.json({ errors: [] });
     } catch (err) {
       res.statusCode = 500;
       const errorsMsg = t["ERRORS"]["PUB_CREATE_ERROR"];
@@ -123,7 +126,7 @@ module.exports = servicePublication => {
     try {
       await removePublicationAsync();
       res.statusCode = 200;
-      res.end();
+      res.json({ errors: [] });
     } catch (err) {
       if (err.name === "NOT_FOUND") {
         res.statusCode = 404;
@@ -138,6 +141,21 @@ module.exports = servicePublication => {
         res.json({ errors });
         return;
       }
+    }
+  });
+
+  router.get("/count", async (req, res, next) => {
+    const getNumberPublicationsAsync = promisify(
+      servicePublication.getNumberOfPublications
+    );
+    try {
+      const data = await getNumberPublicationsAsync();
+      res.json({ number: data });
+    } catch (err) {
+      res.statusCode = 500;
+      const errorsMsg = t["ERRORS"]["PUBS_ERROR"];
+      const errors = errorsMsg ? [errorsMsg] : err.message;
+      res.json({ errors });
     }
   });
 
