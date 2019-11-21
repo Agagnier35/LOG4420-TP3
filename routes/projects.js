@@ -9,7 +9,6 @@ router.get("/", (req, res, next) => {
   fetch(url, headers)
     .then(response => response.json())
     .then(data => {
-      console.log(data);
       res.render(
         "./../views/projects",
         { projects: data.map(d => d.project) },
@@ -23,11 +22,10 @@ router.get("/", (req, res, next) => {
 router.get("/:id", (req, res, next) => {
   const headers = { headers: { Cookie: `ulang=${req.app.locals.lang}` } };
 
-  fetch("http://localhost:3000/api/project/" + req.params.id, headers)
+  fetch("http://localhost:3000/api/projects/" + req.params.id, headers)
     .then(response => response.json())
-    .then(project => {
-
-      res.render("./../views/project", { project: data.map(d => d.project).filter({_id : req.params.id}) }, (err, body) => {
+    .then(data => {
+      res.render("./../views/project", data, (err, body) => {
         err ? next(err) : res.send(body);
       });
     });
