@@ -90,13 +90,17 @@ app.use((err, req, res, next) => {
 });
 
 // Amorçage de l'application web avec la base de données
-MongoClient.connect(config.dbUrl, { useNewUrlParser: true, useUnifiedTopology: true }, (err, client) => {
-  if (err) console.log(err);
+MongoClient.connect(
+  config.dbUrl,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  (err, client) => {
+    if (err) console.err(err);
 
-  app.db = client.db(config.dbName);
-  app.listen(port, function() {
-    console.log("Listening on port " + port);
-  });
-});
+    app.db = client.db(config.dbName);
+    app.listen(port, function() {
+      console.log("Listening on port " + port);
+    });
+  }
+);
 
 module.exports = app;

@@ -7,7 +7,7 @@ const readFileAsync = promisify(fs.readFile);
 
 const readFile = async path => {
   const yamlFile = await readFileAsync(path, "utf8").catch(err =>
-    console.log(err)
+    console.err(err)
   );
   const yamlOpt = yaml.safeLoad(yamlFile);
   return yamlOpt || [];
@@ -23,7 +23,7 @@ const insertFileIntoDB = async (path, db, collectionName) => {
   const res = await db
     .collection(collectionName)
     .insertMany(filteredData)
-    .catch(err => console.log(err));
+    .catch(err => console.err(err));
   console.log(
     `Inserted ${res.insertedCount} entries into collection ${collectionName}`
   );
@@ -32,7 +32,7 @@ const insertFileIntoDB = async (path, db, collectionName) => {
 const insertDataIntoMongo = async () => {
   const client = await MongoClient.connect(config.dbUrl, {
     useNewUrlParser: true
-  }).catch(err => console.log(err));
+  }).catch(err => console.err(err));
 
   try {
     //1. Connect
@@ -57,7 +57,7 @@ const insertDataIntoMongo = async () => {
     const { insertedIds, insertedCount } = await db
       .collection("publications")
       .insertMany(filteredPublications)
-      .catch(err => console.log(err));
+      .catch(err => console.err(err));
     console.log(
       `Inserted ${insertedCount} entries into collection publications`
     );
@@ -80,7 +80,7 @@ const insertDataIntoMongo = async () => {
     const { insertedCount: insertedCountProj } = await db
       .collection("projects")
       .insertMany(linkedProjects)
-      .catch(err => console.log(err));
+      .catch(err => console.err(err));
     console.log(
       `Inserted ${insertedCountProj} entries into collection projects`
     );
