@@ -46,7 +46,7 @@
     "chromedriver": "^77.0.0",
     "geckodriver": "^1.18.0",
     "jspm": "^0.16.54",
-    "mocha": "2.5.3",
+    "mocha": "10.1.0",
     "nightwatch": "^1.2.4",
     "nightwatch-custom-commands-assertions": "^1.1.0",
     "nodemon": "^1.19.1",
