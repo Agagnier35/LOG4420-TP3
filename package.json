@@ -27,7 +27,7 @@
     "async": "^3.0.1",
     "body-parser": "1.12.3",
     "cookie-parser": "1.4.3",
-    "express": "4.12.3",
+    "express": "4.17.3",
     "express-session": "1.15.1",
     "font-awesome": "4.7.0",
     "geolang-express": "1.0.0",
